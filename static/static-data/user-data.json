@@ -1,0 +1,32 @@
+{
+    "userList":[
+        {
+            "id":"1",
+            "loginName":"admin",
+            "name":"管理员",
+            "phone": "",
+            "responsibility":"国网供电公司"
+        },
+        {
+            "id":"2",
+            "loginName":"changting",
+            "name":"长汀",
+            "phone": "",
+            "responsibility":"国网长汀供电公司"
+        },
+        {
+            "id":"3",
+            "loginName":"LongYan",
+            "name":"龙岩",
+            "phone": "",
+            "responsibility":"国网龙岩供电公司"
+        },
+        {
+            "id":"4",
+            "loginName":"ShangHang",
+            "name":"上杭",
+            "phone": "",
+            "responsibility":"国网上杭供电公司"
+        }
+    ]
+}

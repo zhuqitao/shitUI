@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="import" href="/IESlab/pages/head.html" >
+		<!--私有js-->
+		<script src="/IESlab/static/js/sys-user.js"></script>
+	</head>
+
+	<body>
+		<div id="sys-user">
+			<div class="tree left">
+				<ul id="treeDemo" class="ztree"></ul>
+			</div>
+			
+			<div class="table-box">
+				<div class="search-box">
+					<div class="search-item">
+						<label>查询条件1：</label>
+						<input class="ies-input" />
+					</div>
+					<div class="search-item">
+						<label>查询条件2：</label>
+						<input class="ies-input" />
+					</div>
+					<div class="search-item">
+						<label>查询条件3：</label>
+						<input class="ies-input" />
+					</div>
+					<div class="search-item">
+						<label>查询条件4：</label>
+						<input class="ies-input" />
+					</div>
+					<div class="search-item">
+						<label>查询条件5：</label>
+						<input class="ies-input" />
+					</div>
+				</div>
+				<div class="search-btn-group">
+					<div class="left">
+						<button class="ies-btn"><i class="fa fa-plus"></i>添加</button>
+						<button class="ies-btn"><i class="fa fa-pencil-square-o"></i>修改</button>
+						<button class="ies-btn"><i class="fa fa-trash"></i>删除</button>
+					</div>
+					<div class="right">
+						<button class="ies-btn radius primary"><i class="fa fa-search"></i>查询</button>
+						<button class="ies-btn radius success"><i class="fa fa-reply-all"></i>重置</button>
+					</div>
+				</div>
+				<table class="ies-table striped hover">
+					<thead>
+						<tr>
+							<th>名字</th>
+							<th>登录名字</th>
+							<th>所属责任区</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-for="item in userList" :key="userList.id">
+							<td>{{item.name}}</td>
+							<td>{{item.loginName}}</td>
+							<td>{{item.responsibility}}</td>
+							<td>
+								<button class="ies-btn info small"><i class="fa fa-search-plus"></i>查看</button>
+								<button class="ies-btn success small"><i class="fa fa-pencil-square-o"></i>修改</button>
+								<button class="ies-btn error small"><i class="fa fa-trash"></i>删除</button>
+							</td>
+						</tr>
+
+					</tbody>
+
+				</table>
+
+			</div>
+		</div>
+
+	</body>
+
+</html>

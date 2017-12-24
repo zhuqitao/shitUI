@@ -1,0 +1,42 @@
+
+/*菜单背景色*/
+.menu{ 
+	color: #fff;
+}
+.menu a{
+	color: #fff;
+}
+/*菜单头部 (用户头像 用户名字)*/
+.menu-head{
+	/*background: #3ca2e0;*/
+}
+/*点击用户名字下拉框*/
+.menu-head .menu-user-list{ 
+	color: #000;
+	font-size: 12px;
+}
+/*菜单鼠标悬浮背景色*/
+/*.menu-item a:hover{
+	background: #3CA2E0;
+}*/
+/*选中菜单背景色*/
+.menu-item a.active{
+	/*background: #3CA2E0;*/
+}
+/*二级菜单背景色*/
+.menu-item ul{
+	/*background: #0965AE;*/
+}
+
+
+/*导航栏样式*/
+.nav #menu-list a.active{
+	background: #3CA2E0;
+	color: #eee;
+}
+.nav #menu-list a:hover{
+	background: #F1F0F0;
+}
+.nav #menu-list a.active:hover{
+	background: #77C1EE;
+}

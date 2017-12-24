@@ -1,0 +1,639 @@
+html,
+body {
+	padding: 0;
+	margin: 0;
+	height: 100%;
+	/*background: #eee;*/
+}
+
+body.body.fixedWidth {
+	padding: 0 100px;
+}
+
+li {
+	list-style: none
+}
+
+a {
+	text-decoration: none;
+	color: #000;
+}
+
+
+/*头部LOGO及工具栏*/
+
+.head {
+	height: 50px;
+}
+
+.head .logo {
+	margin-left: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	float: left;
+	text-shadow: #2C38E6 0px 0 10px;
+	color: white;
+	font-size: 30px;
+	cursor: pointer;
+}
+
+.head .tool {
+	float: right;
+	height: 100%;
+	display: flex;
+	/*width: 260px;*/
+	align-items: center;
+	justify-content: space-around;
+}
+
+.head .tool>div {
+	display: flex;
+	align-items: center;
+	height: 100%;
+	margin: 0 5px;
+	padding: 0 10px;
+	font-size: 12px;
+	cursor: pointer;
+	color: #fff;
+	position: relative;
+}
+
+.head .tool>div.icon {
+	font-size: 16px;
+}
+
+.head .tool>div.set a {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	color: #fff;
+}
+
+.head .tool>div.set ul.set-list {
+	position: absolute;
+	top: 90%;
+	left: -65px;
+	z-index: 10;
+	background: #fff;
+	border: solid 1px #eee;
+	color: #000;
+	min-width: 180px;
+	max-width: 300px;
+	padding: 15px 0;
+}
+
+.head .tool>div.set ul.set-list li {
+	padding: 10px 25px;
+	font-size: 12px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.colpick.colpick_rgbhex {
+	z-index: 20;
+}
+
+.head .tool>div.set ul li .theme #colorPick {
+	height: 20px;
+	width: 20px;
+	border: solid 1px #fff;
+}
+
+.head .tool>div.set ul li:hover {
+	background: #e6e6e6;
+}
+
+.main {
+	height: calc(100vh - 50px);
+	position: relative;
+}
+
+.menu {
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	width: 200px;
+	overflow: auto;
+	transition: 0.3s;
+}
+
+.menu.menu-left {
+	left: 0;
+}
+
+.menu.menu-right {
+	right: 0;
+}
+
+.menu-mini.menu {
+	width: 0px;
+	transition: 0.3s;
+}
+
+.menu .menu-head {
+	padding: 15px 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
+}
+
+.menu .menu-head img {
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	border: solid 2px #fff;
+}
+
+.menu .menu-head .menu-user-name {
+	margin-top: 10px;
+	cursor: pointer;
+}
+
+.menu .menu-head .menu-user-list {
+	position: absolute;
+	top: 100%;
+	background: #fff;
+	z-index: 10;
+	display: none;
+	padding: 5px 0;
+}
+
+.menu .menu-head .menu-user-list li {
+	padding: 5px 0px 5px 15px;
+	max-width: 160px;
+	min-width: 120px;
+	cursor: pointer;
+}
+
+.menu .menu-head .menu-user-list li:hover {
+	background: #ccc;
+}
+
+.menu ul.menu-box {
+	margin-top: 10px;
+}
+
+
+/*suspent代表菜单是否悬浮     menu-mini代表菜单是否隐藏*/
+
+.menu.menu-left+.content {
+	/*菜单（左）不是悬浮*/
+	margin-left: 200px;
+	transition: 0.3s;
+}
+
+.menu.menu-left.menu-mini+.content {
+	margin-left: 0px;
+	transition: 0.3s;
+}
+
+.menu.menu-left.suspend+.content {
+	/*当菜单（左）设为悬浮  并且菜单非隐藏状态 */
+	margin-left: 0px;
+}
+
+.menu.menu-left.suspend+.content .nav {
+	/*当菜单（左）设为悬浮  并且菜单非隐藏状态  */
+	margin-left: 200px;
+	transition: 0.3s;
+}
+
+.menu.menu-left.suspend.menu-mini+.content .nav {
+	/*菜单（左）设为悬浮  菜单隐藏状态   内容区域的导航栏为满宽*/
+	margin-left: 0px;
+}
+
+.menu.menu-right+.content {
+	/*菜单（右）不是悬浮并且菜单非隐藏状态时 */
+	margin-right: 200px;
+	transition: 0.3s;
+}
+
+.menu.menu-right.menu-mini+.content {
+	/*当菜单（右）不是悬浮 并且菜单隐藏状态*/
+	margin-right: 0px;
+	transition: 0.3s;
+}
+
+.menu.menu-right.suspend+.content {
+	/*当菜单（右）设为悬浮并且菜单非隐藏状态时 */
+	margin-right: 0px;
+}
+
+.menu.menu-right.suspend+.content .nav {
+	/*菜单（右）悬浮并且非隐藏状态  */
+	margin-right: 200px;
+	transition: 0.3s;
+}
+
+.menu.menu-right.suspend.menu-mini+.content .nav {
+	/*菜单（右）悬浮并且隐藏状态  */
+	margin-right: 0px;
+}
+
+.content {
+	display: flex;
+	height: 100%;
+	overflow: auto;
+	transition: 0.3s;
+	flex-direction: column;
+	background: #fff;
+}
+
+.nav {
+	height: 35px;
+	overflow-x: hidden;
+	display: flex;
+}
+
+.nav #page-tab .menu-togger {
+	display: flex;
+	align-items: center;
+	padding: 0 10px;
+	cursor: pointer;
+}
+
+.section {
+	height: 100%;
+	display: flex;
+	overflow: auto;
+}
+
+.section iframe {
+	width: 100%;
+	border: none;
+}
+
+
+/*带查询表格模板*/
+
+.table-box {
+	display: flex;
+	flex-direction: column;
+}
+.table-box .search{
+	display: flex;
+}
+.table-box .search .search-box{
+	display: flex;
+	flex-wrap: wrap;
+	min-width: 50%;
+	max-width: calc(100% - 300px);
+	margin-right: 10px;
+}
+.table-box .search .search-box .search-item{
+	display: flex;
+	align-items: center;
+	margin-right: 10px;
+	min-width: 260px;
+}
+.table-box .search .search-btn{
+	display: flex;
+	align-items: flex-end;
+}
+
+.table-box table i.fa-angle-right {
+	padding: 5px;
+	color: #aaa;
+}
+
+.table-box table i.open-list:hover {
+	color: #569CE4;
+	text-shadow: 0 0 2px #569CE4;
+	transition: 0.3s;
+}
+
+.table-box table i.open-list.active {
+	transform: rotate(90deg);
+}
+
+
+/*table表格*/
+
+table,
+td,
+th {
+	border: 1px solid #ddd;
+	padding: 10px 10px;
+	text-align: left;
+	margin-top: 5px;
+}
+
+table thead {
+	background-color: #F0f0f0;
+}
+
+.ies-table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+table.ies-table.hover tbody tr:hover {
+	background-color: #efefef;
+}
+
+.ies-table.striped tbody tr:nth-child(even) {
+	background-color: #fff;
+}
+
+.ies-table.striped tbody tr:nth-child(odd) {
+	background-color: #f9f9f9;
+}
+
+/*树形结构*/
+
+/*ul.ies-tree>li:first-child:before {
+	border-style: none none dotted none;
+}
+
+ul.ies-tree,
+ul.ies-tree ul {
+	margin: 0;
+	padding: 0 0 0 2em;
+}
+
+ul.ies-tree li {
+	list-style: none;
+	position: relative;
+}
+
+ul.ies-tree>li ul {
+	display: none;
+}
+
+ul.ies-tree li:before {
+	position: absolute;
+	content: '';
+	top: 0.1em;
+	left: -1em;
+	width: 1em;
+	height: 0.5em;
+	border-style: none none dotted dotted;
+	border-width: 0.05em;
+	border-color: #aaa;
+}
+
+ul.ies-tree li:not(:last-child):after {
+	position: absolute;
+	content: '';
+	top: 0.6em;
+	left: -1em;
+	bottom: -0.2em;
+	border-style: none none none dotted;
+	border-width: 0.05em;
+	border-color: #aaa;
+}
+
+ul.ies-tree .open-tree-btn {
+	position: absolute;
+	left: -1.6em;
+	top: 0.1em;
+	z-index: 1;
+}
+
+ul.ies-tree .open-tree-btn:hover:before {
+	color: #5BC0DE;
+	box-shadow: 0 0 1px #5BC0DE, 0 0 1px #5BC0DE inset;
+}
+
+ul.ies-tree .open-tree-btn:before {
+	position: absolute;
+	line-height: 0.78em;
+	background-color: #fff;
+	border-radius: 2px;
+}
+ul.ies-tree .ies-check, ul.ies-tree .ies-radio{
+	margin-right: 5px;
+}*/
+/*input输入框*/
+
+.ies-input {
+	width: 150px;
+	height: 20px;
+	border: solid 1px #ddd;
+	outline: none;
+	padding: 2px 5px;
+	border-radius: 3px;
+}
+
+.ies-input:focus {
+	border: solid 1px #7DACF3;
+	box-shadow: 0 0 2px #7DACF3;
+}
+
+
+/*按钮 btn*/
+
+button {
+	outline: none;
+	cursor: pointer;
+}
+
+.ies-btn {
+	background-color: #fff;
+	border: solid 1px #ccc;
+	padding: 6px 12px;
+	border-radius: 3px;
+}
+
+.ies-btn.small {
+	padding: 1px 4px;
+}
+
+.ies-btn:hover {
+	background-color: #ddd;
+}
+
+.ies-btn.radius {
+	border-radius: 30px;
+}
+
+.ies-btn.primary {
+	background-color: #337AB7;
+	color: #fff;
+}
+
+.ies-btn.primary:hover {
+	background-color: #286192;
+}
+
+.ies-btn.info {
+	background-color: #5BC0DE;
+	color: #fff;
+}
+
+.ies-btn.info:hover {
+	background-color: #4EA4BD;
+}
+
+.ies-btn.success {
+	background-color: #449D44;
+	color: #fff;
+}
+
+.ies-btn.success:hover {
+	background-color: #387E38;
+}
+
+.ies-btn.warning {
+	background-color: #F0AD4E;
+	color: #fff;
+}
+
+.ies-btn.warning:hover {
+	background-color: #EC971F;
+}
+
+.ies-btn.error {
+	background-color: #D9534F;
+	color: #fff;
+}
+
+.ies-btn.error:hover {
+	background-color: #C9302C;
+}
+
+
+/*滑动按钮*/
+
+.switch-slide-label {
+	display: block;
+	width: 34px;
+	height: 18px;
+	background: #ccc;
+	border-radius: 30px;
+	cursor: pointer;
+	position: relative;
+	-webkit-transition: all .3s ease;
+	transition: all .3s ease;
+}
+
+.switch-slide-label:after {
+	content: '';
+	display: block;
+	width: 16px;
+	height: 16px;
+	border-radius: 100%;
+	background: #fff;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+	position: absolute;
+	left: 1px;
+	top: 1px;
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
+	-webkit-transition: all .3s ease;
+	transition: all .3s ease;
+}
+
+.switch-slide input:checked+label {
+	background: #34bf49;
+	transition: all .3s ease;
+}
+
+.switch-slide input:checked+label:after {
+	left: 17px;
+}
+
+
+/*复选框*/
+
+.ies-check {
+	display: inline-block;
+}
+.ies-check input[type='checkbox']+label{
+	display: flex;
+	transition: background-color 0.3s;
+	background-color: #fff;
+	border: 1px solid #d7d7d7;
+	border-radius: 3px;
+	width: 16px;
+	height: 16px;
+	box-sizing: border-box;
+}
+.ies-check input[type='checkbox']+label:hover{
+	border-color: #57ad68;
+	box-shadow:0 0 3px #57ad68 inset;
+	border-radius: 3px;
+}
+.ies-check input[type='checkbox']:checked+label {
+	border: 1px solid #57ad68;
+	background-color: #57ad68;
+}
+.ies-check input[type='checkbox']:checked+label:after {
+	content: "\2714";
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.ies-check.small input[type='checkbox']+label{
+	width: 12px;
+	height: 12px;
+}
+.ies-check.small input[type='checkbox']:checked+label:after{
+	transform:scale(0.8)
+}
+.ies-check.large input[type='checkbox']+label{
+	width: 20px;
+	height: 20px;
+}
+.ies-check.large input[type='checkbox']:checked+label:after{
+	transform:scale(1.4)
+}
+
+/*单选框*/
+
+.ies-radio {
+	margin: 0px;
+}
+.ies-radio input+label {
+	width: 18px;
+	height: 18px;
+	box-sizing: border-box;
+	display: inline-block;
+	border-radius: 50%;
+	border: 1px solid #d7d7d7;
+	background-color: #fff;
+	transition: 0.3s;
+}
+.ies-radio input+label:hover{
+	box-shadow: 0 0 2px #3797fc inset;
+	border-color: #3797fc;
+}
+.ies-radio input[type='radio']:checked+label {
+	padding: 3px;
+	background-clip: content-box;
+	background-color: #3797fc;
+	border-color: #3797fc;
+}
+.ies-radio.small input+label{
+	width: 12px;
+	height: 12px;
+}
+.ies-radio.small input[type='radio']:checked+label{
+	padding: 2px;
+}
+/*全局布局*/
+
+.hidden {
+	display: none;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+i.fa {
+	padding: 3px;
+	cursor: pointer;
+}

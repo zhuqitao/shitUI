@@ -1,0 +1,24 @@
+{
+    "roleList":[
+        {
+            "id":"1",
+            "name":"管理员",
+            "responsibility":"国网供电公司"
+        },
+        {
+            "id":"2",
+            "name":"长汀",
+            "responsibility":"国网长汀供电公司"
+        },
+        {
+            "id":"3",
+            "name":"龙岩",
+            "responsibility":"国网龙岩供电公司"
+        },
+        {
+            "id":"4",
+            "name":"上杭",
+            "responsibility":"国网上杭供电公司"
+        }
+    ]
+}

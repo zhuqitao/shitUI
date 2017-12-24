@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<link rel="import" href="/IESlab/pages/head.html" >
+	</head>
+
+	<body class="body">
+
+		<div class="head">
+			<div class="logo">
+				LOGO
+			</div>
+
+			<div class="tool">
+				<div class="icon">
+					<i class="fa fa-code-fork" aria-hidden="true"></i>
+				</div>
+				<div class="icon">
+					<i class="fa fa-balance-scale" aria-hidden="true"></i>
+				</div>
+				<div class="set">
+					<a>设置</a>
+					<ul class="set-list hidden">
+						<li>
+							<div>风格</div>
+							<div class="theme">
+								<div id="colorPick"></div>
+							</div>
+						</li>
+						<li>
+							<div>菜单靠右</div>
+							<label class="switch-slide">
+								<input type="checkbox" id="menu-right" hidden>
+								<label for="menu-right" class="switch-slide-label"></label>
+							</label>
+							
+						</li>
+						<li>
+							<div>菜单悬浮</div>
+							<label class="switch-slide">
+								<input type="checkbox" id="menu-suspend" hidden>
+								<label for="menu-suspend" class="switch-slide-label"></label>
+							</label>
+						</li>
+						<li>
+							<div>固定宽度</div>
+							<label class="switch-slide">
+								<input type="checkbox" id="fixed-width" hidden>
+								<label for="fixed-width" class="switch-slide-label"></label>
+							</label>
+						</li>
+					</ul>
+				</div>
+
+				<div class="user">
+					<i class="fa fa-user-o" aria-hidden="true"></i> admin
+				</div>
+			</div>
+		</div>
+		<div class="main">
+			<div class="menu menu-left">
+				<div class="menu-head">
+					<img class="mune-user-img" src="static/image/menu-head.jpg">
+					<div class="menu-user-name" href="#">
+						admin
+						<i class="fa fa-caret-down" aria-hidden="true"></i>
+					</div>
+					<ul class="menu-user-list">
+						<li>修改头像</li>
+						<li>个人资料</li>
+						<li>我的通讯录</li>
+						<li>信箱</li>
+						<li>退出</li>
+					</ul>
+				</div>
+				<ul class="menu-box">
+					<li class="menu-item">
+						<a class="super-menu">
+							<i class="my-icon menu-icon icon_1"></i>
+							<span>系统管理</span>
+							<i class="my-icon menu-more"></i>
+						</a>
+						<ul>
+							<li>
+								<a href="pages/sys-menu.html" class="junior-menu"><span>菜单管理</span></a>
+							</li>
+							<li>
+								<a href="pages/sys-role.html" class="junior-menu"><span>角色管理</span></a>
+							</li>
+							<li>
+								<a href="pages/sys-user.html" class="junior-menu"><span>用户管理</span></a>
+							</li>
+
+						</ul>
+					</li>
+					<li class="menu-item">
+						<a class="super-menu">
+							<i class="my-icon menu-icon icon_1"></i>
+							<span>网络配置</span>
+							<i class="my-icon menu-more"></i>
+						</a>
+						<ul>
+							<li>
+								<a href="content.html#1" class="junior-menu"><span>网络设置</span></a>
+							</li>
+							<li>
+								<a href="javascript:;" class="junior-menu"><span>友情链接2</span></a>
+							</li>
+
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<div class="content">
+				<div class="nav">
+					<div id="page-tab">
+						<button id="menu-togger" class="menu-togger">
+							<i class="fa fa-bars" aria-hidden="true"></i>
+						</button>
+						<div id="page-prev"><i class="fa fa-angle-double-left" aria-hidden="true"></i></div>
+						<div id="page-tab-box">
+							<nav id="page-tab-content">
+								<div id="menu-list"> </div>
+							</nav>
+						</div>
+						<div id="page-next"><i class="fa fa-angle-double-right" aria-hidden="true"></i></div>
+					</div>
+				</div>
+
+				<div class="section">
+					<iframe></iframe>
+				</div>
+			</div>
+		</div>
+
+	</body>
+
+</html>
