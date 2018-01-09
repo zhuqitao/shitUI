@@ -1,23 +1,3 @@
-//require.config({
-//	baseUrl: '/IESlab',
-//	// 配置插件地址
-//	paths: {
-//		"jquery": "https://cdn.bootcss.com/jquery/3.2.1/jquery.min",
-//		"tab": "plugins/tabs/js/tab",
-//		"jq-menu": "plugins/jquery-menu-accordion/js/menu",
-//		'colpick': 'plugins/colpick/js/colpick',
-//		'vue': 'plugins/vue/vue'
-//	},
-//	// 配置插件的依赖项
-//	shim: {
-//		'tab': ['jquery'],
-//		'jq-menu': ['jquery'],
-//		'colpick': ['jquery']
-//	}
-//})
-//require(["jquery","tab","jq-menu",'colpick','vue'], function() {
-//	
-//});
 
 $(function() {
 	iesInit()
@@ -26,11 +6,21 @@ $(function() {
 		themeInit() // 主题初始化
 		themeSetListener() // 主题设置监听器
 		$(".menu-item ul a").tab();
-		$.addTabFixed('pages/sys-menu.html', '首页')
-		// iframe加内边距
-		if(window !== top){
-			$('html').css('padding','10px')
-		}
+		$.addTabFixed('pages/sys-menu/sys-menu.html', '首页')
+//		if(window === top) {
+//			var iframe = document.getElementById("tab-iframe");
+//			if( /*@cc_on!@*/ 0) { // IE浏览器
+//				iframe.attachEvent("onload", function() { // IE  
+//					alert("Local iframe is now loaded");
+//				});
+//			} else {
+//				iframe.onload = function() { // 非IE  
+//					$('#tab-iframe').contents().find("html").css( "padding", "10px" );
+//				};
+//			}
+//		}
+		//		iframe.src = "http://www.baidu.com";
+
 	}
 	// 主题初始化
 	function themeInit() {

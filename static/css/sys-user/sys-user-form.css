@@ -1,0 +1,52 @@
+#sys-menu-form{
+	padding: 10px;
+}
+.form-item{
+	display: flex;
+	border: solid 1px #E7E7E7;
+}
+.form-item .form-item-head{
+	display: flex;
+	width: 15%;
+	align-items: center;
+	justify-content: flex-end;
+	padding-right: 10px;
+	background-color: #F5F5F5;
+	color: #676a6c;
+	font-size: 13px;
+	font-weight: 700;
+}
+.form-item .form-item-con{
+	flex: 1;
+	display: flex;
+	align-items: center;
+	align-content: center;
+	/*justify-content: center;*/
+	flex-wrap: wrap;
+	padding: 5px;
+}
+.form-item .form-item-con input.required{
+	border: 1px dotted red;
+}
+.form-item .form-item-con .layui-form-checkbox{
+	margin: 3px 0;
+}
+.form-item .form-item-con .help-inline{
+	text-align: left;
+	width: 100%;
+	color: #aaa;
+	font-size: 13px;
+}
+.form-item .form-item-con .help-inline.required{
+	color: #cc5965;
+	font-weight: 700;
+}
+.form-item .form-item-con .iconIconLabel{
+	margin: 0 10px;
+}
+.form-item .form-item-con .clear{
+	background-color: #C2C2C2;
+}
+.form-item .form-item-con .clear:hover{
+	background-color: #aaa;
+}

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="import" href="/IESlab/pages/head.html">
+		<script src="/IESlab/static/js/sys-menu/sys-menu.js"></script>
+	</head>
+
+	<body style="padding: 10px">
+		<div id="sys-menu">
+			<div class="table-box">
+				<div class="search layui-form">
+					<div class="search-box">
+						<div class="search-item">
+							<label>选择开始时间：</label>
+							<input name="asd" class="layui-input" id="date1" />
+						</div>
+						<div class="search-item">
+							<label>选择结束时间：</label>
+							<input name="asd" class="layui-input" id="date2" />
+						</div>
+						<div class="search-item">
+							<label>选择时间区域：</label>
+							<input name="asd" class="layui-input" id="date3" />
+						</div>
+						
+						<div class="search-item">
+							<label>选择省：</label>
+							<select name="city" lay-verify="">
+								<option value="0">请选择一个省</option>
+								<option value="1">省1</option>
+								<option value="2">省2</option>
+								<option value="3">省3</option>
+							</select>
+						</div>
+						<div class="search-item">
+							<label>选择市：</label>
+							<select name="city" lay-verify="">
+								<option value="0">请选择一个城市</option>
+								<option value="1">市1</option>
+								<option value="2">市2</option>
+								<option value="3">市3</option>
+							</select>
+						</div>
+						<div class="search-item">
+							<label>选择地区：</label>
+							<select name="city" lay-verify="">
+								<option value="0">请选择一个地区</option>
+								<option value="1">地区1</option>
+								<option value="2">地区2</option>
+								<option value="3">地区3</option>
+							</select>
+						</div>
+						<div class="search-item">
+							<label>输入查询：</label>
+							<input name="asd" class="layui-input" />
+						</div>
+
+					</div>
+					<div class="search-btn">
+						<button class="ies-btn radius primary"><i class="fa fa-search"></i>查询</button>
+						<button class="ies-btn radius success"><i class="fa fa-reply-all"></i>重置</button>
+					</div>
+				</div>
+				<div class="handle-btn">
+					<button class="ies-btn" @click="addMenu"><i class="fa fa-plus"></i>添加</button>
+					<button class="ies-btn" @click="editMenu"><i class="fa fa-pencil-square-o"></i>修改</button>
+					<button class="ies-btn" @click="delMenu"><i class="fa fa-trash"></i>删除</button>
+				</div>
+				<table class="ies-table striped hover layui-form">
+					<thead>
+						<tr>
+							<th width="20"><input type="checkbox" lay-skin="primary" lay-filter="choseAll" ref="choseAll"></th>
+							<th>名字</th>
+							<th>链接</th>
+							<th>可见</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<template v-for="mainMenu in menuList">
+							<tr>
+								<td><input type="checkbox" lay-skin="primary" v-model="checkboxModel" :value="mainMenu.id" lay-filter="choseItem"></td>
+								<td>
+									<i class="fa fa-angle-right fa-lg open-list" @click="openChildMenu(mainMenu.id,$event)"></i> {{mainMenu.name}}
+								</td>
+								<td>{{mainMenu.link}}</td>
+								<td>{{mainMenu.disable}}</td>
+								<td>
+									<button class="ies-btn primary small">添加子菜单</button>
+									<button class="ies-btn success small">编辑</button>
+									<button class="ies-btn error small">删除</button>
+								</td>
+							</tr>
+							<tr v-for="childMenu in mainMenu.children" v-show="mainMenu.id===mainMenuID">
+								<td><input type="checkbox" lay-skin="primary" v-model="checkboxModel" :value="childMenu.id" lay-filter="choseItem"></td>
+								<td class="secendMenuName">
+									{{childMenu.name}}
+								</td>
+								<td>{{childMenu.link}}</td>
+								<td>{{childMenu.disable}}</td>
+								<td>
+									<button class="ies-btn success small">编辑</button>
+									<button class="ies-btn error small">删除</button>
+								</td>
+							</tr>
+						</template>
+
+					</tbody>
+
+				</table>
+
+			</div>
+		</div>
+
+	</body>
+
+</html>

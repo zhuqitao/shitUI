@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="import" href="/IESlab/pages/head.html" >
+		<!--私有js-->
+		<script src="/IESlab/static/js/sys-user/sys-user.js"></script>
+	</head>
+
+	<body style="padding: 10px;">
+		<div id="sys-user">
+			<div class="tree left">
+				<ul id="treeDemo" class="ztree"></ul>
+			</div>
+			
+			<div class="table-box">
+				<div class="search layui-form">
+					<div class="search-box">
+						<div class="search-item">
+							<label>选择开始时间：</label>
+							<input name="asd" class="layui-input" id="date1" />
+						</div>
+						<div class="search-item">
+							<label>选择结束时间：</label>
+							<input name="asd" class="layui-input" id="date2" />
+						</div>
+						<div class="search-item">
+							<label>选择时间区域：</label>
+							<input name="asd" class="layui-input" id="date3" />
+						</div>
+						
+						<div class="search-item">
+							<label>选择省：</label>
+							<select name="city" lay-verify="">
+								<option value="0">请选择一个省</option>
+								<option value="1">省1</option>
+								<option value="2">省2</option>
+								<option value="3">省3</option>
+							</select>
+						</div>
+						<div class="search-item">
+							<label>选择市：</label>
+							<select name="city" lay-verify="">
+								<option value="0">请选择一个城市</option>
+								<option value="1">市1</option>
+								<option value="2">市2</option>
+								<option value="3">市3</option>
+							</select>
+						</div>
+						<div class="search-item">
+							<label>选择地区：</label>
+							<select name="city" lay-verify="">
+								<option value="0">请选择一个地区</option>
+								<option value="1">地区1</option>
+								<option value="2">地区2</option>
+								<option value="3">地区3</option>
+							</select>
+						</div>
+						<div class="search-item">
+							<label>输入查询：</label>
+							<input name="asd" class="layui-input" />
+						</div>
+
+					</div>
+					<div class="search-btn">
+						<button class="ies-btn radius primary"><i class="fa fa-search"></i>查询</button>
+						<button class="ies-btn radius success"><i class="fa fa-reply-all"></i>重置</button>
+					</div>
+				</div>
+				<div class="handle-btn">
+					<button class="ies-btn" @click="addUser"><i class="fa fa-plus"></i>添加</button>
+					<button class="ies-btn" @click="editUser"><i class="fa fa-pencil-square-o"></i>修改</button>
+					<button class="ies-btn" @click="delUser"><i class="fa fa-trash"></i>删除</button>
+				</div>
+				<table class="ies-table striped hover layui-form">
+					<thead>
+						<tr>
+							<th width="20"><input type="checkbox" lay-skin="primary" lay-filter="choseAll" ref="choseAll"></th>
+							<th>名字</th>
+							<th>登录名字</th>
+							<th>所属责任区</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-for="item in userList" :key="userList.id">
+							<td><input type="checkbox" lay-skin="primary" v-model="checkboxModel" :value="item.id" lay-filter="choseItem"></td>
+							<td>{{item.name}}</td>
+							<td>{{item.loginName}}</td>
+							<td>{{item.responsibility}}</td>
+							<td>
+								<button class="ies-btn info small"><i class="fa fa-search-plus"></i>查看</button>
+								<button class="ies-btn success small"><i class="fa fa-pencil-square-o"></i>修改</button>
+								<button class="ies-btn error small"><i class="fa fa-trash"></i>删除</button>
+							</td>
+						</tr>
+
+					</tbody>
+
+				</table>
+
+			</div>
+		</div>
+
+	</body>
+
+</html>

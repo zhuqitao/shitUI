@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="import" href="/IESlab/pages/head.html">
+		<link rel="stylesheet" href="/IESlab/static/css/sys-menu/sys-menu-form.css" />
+		<script src="/IESlab/static/js/sys-menu/sys-menu-form.js"></script>
+	</head>
+
+	<body>
+		<div id="sys-menu-form" class="layui-form">
+			<div class="form-row">
+				<div class="form-item">
+					<div class="form-item-head">上级菜单：</div>
+					<div class="form-item-con">
+						<input class="layui-input" type="" name="" id="" value="" />
+					</div>
+					<div class="form-item-head">名称：</div>
+					<div class="form-item-con">
+						<input class="layui-input" type="" name="" id="" value="" />
+					</div>
+					
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-item">
+					<div class="form-item-head">链接：</div>
+					<div class="form-item-con">
+						<input class="layui-input" type="" name="" id="" value="" />
+						<div class="help-inline">
+							点击跳转的页面
+						</div>
+					</div>
+					<div class="form-item-head">目标：</div>
+					<div class="form-item-con">
+						<input class="layui-input" type="" name="" id="" value="" />
+						<div class="help-inline">
+							链接打开的目标窗口，默认：mainFrame
+						</div>
+					</div>
+					
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-item">
+					<div class="form-item-head">图标：</div>
+					<div class="form-item-con">
+						<span class="iconIconLabel">
+							无
+						</span>
+						<button class="layui-btn">选择</button>
+						<button class="layui-btn clear">清除</button>
+					</div>
+					<div class="form-item-head">排序：</div>
+					<div class="form-item-con">
+						<input class="layui-input" type="" name="" id="" value="" />
+						<div class="help-inline">
+							排列顺序，升序。
+						</div>
+					</div>
+					
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-item">
+					<div class="form-item-head">可见：</div>
+					<div class="form-item-con">
+						<input type="radio" name="isShow" value="show" title="可见" checked>
+						<input type="radio" name="isShow" value="hide" title="隐藏">
+						<div class="help-inline">
+							该菜单或操作是否显示到系统菜单中
+						</div>
+					</div>
+					<div class="form-item-head">权限标志：</div>
+					<div class="form-item-con">
+						<input class="layui-input" type="" name="" id="" value="" />
+						<div class="help-inline">
+							控制器中定义的权限标识，如：@RequiresPermissions("权限标识")
+						</div>
+					</div>
+					
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-item">
+					<div class="form-item-head">备注：</div>
+					<div class="form-item-con">
+						<textarea name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
+					</div>
+					<div class="form-item-head"></div>
+					<div class="form-item-con">
+						
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

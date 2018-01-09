@@ -6,7 +6,7 @@
             "link":"",
             "disable":"true",
             "powerSign":"",
-            "childMenu":[
+            "children":[
                 {
                     "id":"11",
                     "name":"菜单管理",
@@ -36,7 +36,7 @@
             "link":"",
             "disable":"true",
             "powerSign":"",
-            "childMenu":[
+            "children":[
                 {
                     "id":"21",
                     "name":"个人信息",

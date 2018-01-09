@@ -7,13 +7,21 @@
     linkframe = function(url, value) {
         $("#menu-list a.active").removeClass("active");
         $("#menu-list a[data-url='" + url + "'][data-value='" + value + "']").addClass("active");
-		$('.section iframe').attr('src',url)
+		//$('.section iframe').attr('src',url)
+		$(".section iframe.active").removeClass("active");
+        $(".section .iframe-content[data-url='" + url + "'][data-value='" + value + "']").addClass("active");
         $("#menu-all-ul li.active").removeClass("active");
         $("#menu-all-ul li[data-url='" + url + "'][data-value='" + value + "']").addClass("active")
         $("#menu-list a").css('background-color', '#fff')
         $("#menu-list a.active").css('background-color', localStorage.getItem('themeColor') || '#3CA2E0')
     },
     createNavDom = function(linkUrl,linkHtml) {
+    	$("<iframe>", {
+            "class": "iframe-content",
+            "data-url": linkUrl,
+            "data-value": linkHtml,
+            src: linkUrl
+        }).appendTo(".section");
     	navDom = $("<a>", {
                     "href": "javascript:void(0);",
                     "data-url": linkUrl,
@@ -40,7 +48,8 @@
                 		"class": "close-menu",
                 		"html": "关闭标签"
                 	}).bind('click',function(e){
-                		$(_this).find('i.menu-close').click()// 关闭当前标签
+                		//$(_this).find('i.menu-close').click()// 关闭当前标签
+                		close(_this)
                 		$(_this).find('ul').remove()
                 	}).appendTo(contextmenuList)
                 	
@@ -69,15 +78,19 @@
                 		"html": "关闭左侧标签"
                 	}).bind('click',function(e){
                 		var activeMenu = $(_this).parents('#menu-list').find('a.active')
+                		console.log(activeMenu.index(),$(_this).index())
                 		if(activeMenu.index() <= $(_this).index()){
                 			/*激活的标签在被点击标签的左侧或者被点击的标签就是激活标签*/
                 			$(_this).prevAll().find('i.menu-close').click()
+                			
                 			$(_this).click()
                 		}else {
                 			$(_this).prevAll().find('i.menu-close').click()
+                			
                 			activeMenu.click()
                 		}
                 		$(_this).find('ul').remove()
+                		move($('#menu-list').children("a:first-child"))
                 	}).appendTo(contextmenuList)
                 	
                 	// 添加关闭右侧标签菜单
@@ -102,10 +115,18 @@
                 		"class": "close-left-menu",
                 		"html": "关闭所有标签"
                 	}).bind('click',function(e){
-                		$(_this).parents('#menu-list').find('a i.menu-close').click()
+                		//close($(_this).parents('#menu-list').find('a'))
+                		var delDom = []
+                		$(_this).parents('#menu-list').find('a').map(function(i,v){
+                			if($(v).find('i.menu-close').length>0){
+                				delDom.push($(_this).parents('#menu-list').find('a')[i])
+                			}
+                		})
+                		close(delDom)
+                		//$(_this).parents('#menu-list').find('a i.menu-close').click()
                 		$(_this).find('ul').remove()
+                		$('#menu-list').find('a').click()
                 	}).appendTo(contextmenuList)
-                	
                 	
                 	contextmenuList.appendTo($(_this))
                 	$(document).one('click',function(e){
@@ -145,6 +166,7 @@
         }
     },
     closemenu = function() {
+    	
         $(this.parentElement).animate({
             "width": "0",
             "padding": "0"
@@ -152,24 +174,52 @@
         0,
         function() {
             var jthis = $(this);
+            var cur = ''
             if (jthis.hasClass("active")) {
                 var linext = jthis.next();
                 if (linext.length > 0) {
                     linext.click();
+                    linkframe($(linext).data('url'),$(linext).data('value'))
                     move(linext)
+                    cur = linext
                 } else {
                     var liprev = jthis.prev();
                     if (liprev.length > 0) {
-                        liprev.click();
+                        $(liprev).click();
+                        linkframe($(liprev).data('url'),$(liprev).data('value'))
                         move(liprev)
+                        cur = liprev
                     }
                 }
             }
             this.remove();
-            $("#page-content .iframe-content[data-url='" + jthis.data("url") + "'][data-value='" + jthis.data("value") + "']").remove()
+            move(cur)
+            $(".section .iframe-content[data-url='" + jthis.data("url") + "'][data-value='" + jthis.data("value") + "']").remove()
         });
-        event.stopPropagation()
+        //event.stopPropagation()
     },
+    close = function(dom) {
+    	
+            var jthis = $(dom);
+            if (jthis.hasClass("active")) {
+                var linext = jthis.next();
+                if (linext.length > 0) {
+                    linext.click();
+                    linkframe($(linext).data('url'),$(linext).data('value'))
+                    move(linext)
+                } else {
+                    var liprev = jthis.prev();
+                    if (liprev.length > 0) {
+                        $(liprev).click();
+                        linkframe($(liprev).data('url'),$(liprev).data('value'))
+                        move(liprev)
+                    }
+                }
+            }
+            jthis.remove();
+            $(".section .iframe-content[data-url='" + jthis.data("url") + "'][data-value='" + jthis.data("value") + "']").remove()
+    },
+
     init = function() {
         $("#page-prev").bind("click",
         function() {
@@ -216,7 +266,6 @@
     $.fn.tab = function() {
         init();
         this.bind("click",
-
         function() {
             var linkUrl = this.href;
             var linkHtml = this.text.trim();
@@ -224,7 +273,9 @@
             if (selDom.length === 0) {
                 var iel = $("<i>", {
                     "class": "menu-close fa fa-times-circle"
-                }).bind("click", closemenu);
+                }).bind("click", function(){
+                	close($(this).parents('a'))
+                });
                 var menuName = $('<div>',{
                 	"html":linkHtml,
                 	'class': 'menu-name'
@@ -355,6 +406,7 @@
         }
         linkframe(linkUrl,linkHtml)
     }
+    // 添加不能关闭的tab页
     $.addTabFixed = function(linkUrl,linkHtml){
         var selDom = $("#menu-list a[data-url='" + linkUrl + "'][data-value='" + linkHtml + "']");
         if (selDom.length === 0) {

@@ -276,23 +276,29 @@ a {
 }
 .table-box .search{
 	display: flex;
+	margin: 10px 0;
 }
 .table-box .search .search-box{
 	display: flex;
 	flex-wrap: wrap;
-	min-width: 50%;
-	max-width: calc(100% - 300px);
+	min-width: 300px;
+	max-width: calc(100% - 170px);
 	margin-right: 10px;
 }
 .table-box .search .search-box .search-item{
 	display: flex;
+	justify-content: space-between;
 	align-items: center;
-	margin-right: 10px;
-	min-width: 260px;
+	margin: 5px 10px 5px 0;
+	min-width: 300px;
+	max-width: 350px;
+}
+.table-box .search .search-box .search-item input{
+	width: 200px;
 }
 .table-box .search .search-btn{
 	display: flex;
-	align-items: flex-end;
+	align-items: center;
 }
 
 .table-box table i.fa-angle-right {
@@ -344,7 +350,9 @@ table.ies-table.hover tbody tr:hover {
 }
 
 /*树形结构*/
-
+.tree{
+	margin: 10px;
+}
 /*ul.ies-tree>li:first-child:before {
 	border-style: none none dotted none;
 }
